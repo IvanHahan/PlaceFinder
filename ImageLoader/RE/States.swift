@@ -10,9 +10,6 @@ import Foundation
 import ReSwift
 
 struct AppState: StateType {
-    let departmentsState: DepartmentsState
+    
 }
 
-enum DepartmentsState: StateType {
-    case loading, finished([Department]), added(Department), failure(Error)
-}

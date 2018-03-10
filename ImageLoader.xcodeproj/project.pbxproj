@@ -20,15 +20,17 @@
 		F48CF67E205472C100B3F7C0 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF643205472C100B3F7C0 /* SessionManager.swift */; };
 		F48CF680205472C100B3F7C0 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF646205472C100B3F7C0 /* CoreDataStack.swift */; };
 		F48CF681205472C100B3F7C0 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF647205472C100B3F7C0 /* Managed.swift */; };
-		F48CF686205472C100B3F7C0 /* RepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF64E205472C100B3F7C0 /* RepositoryError.swift */; };
 		F48CF687205472C100B3F7C0 /* DepartmentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF64F205472C100B3F7C0 /* DepartmentRepository.swift */; };
-		F48CF688205472C100B3F7C0 /* EmployeeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF650205472C100B3F7C0 /* EmployeeRepository.swift */; };
 		F48CF68C205472C100B3F7C0 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF656205472C100B3F7C0 /* Identifiable.swift */; };
 		F48CF698205472C100B3F7C0 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF66C205472C100B3F7C0 /* UITableViewExtensions.swift */; };
 		F48CF69A205472C100B3F7C0 /* DepartmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF66F205472C100B3F7C0 /* DepartmentsViewController.swift */; };
 		F48CF69F205472C100B3F7C0 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF675205472C100B3F7C0 /* States.swift */; };
 		F48CF6A0205472C100B3F7C0 /* Reducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF676205472C100B3F7C0 /* Reducers.swift */; };
 		F48CF6A1205472C100B3F7C0 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF677205472C100B3F7C0 /* Actions.swift */; };
+		F48CF6A3205477AB00B3F7C0 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF6A2205477AB00B3F7C0 /* MapController.swift */; };
+		F48CF6A52054790C00B3F7C0 /* PlaceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF6A42054790C00B3F7C0 /* PlaceRepository.swift */; };
+		F48CF6A72054798200B3F7C0 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF6A62054798200B3F7C0 /* Place.swift */; };
+		F48CF6AA205479A000B3F7C0 /* PlaceMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF6A9205479A000B3F7C0 /* PlaceMO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,15 +64,17 @@
 		F48CF643205472C100B3F7C0 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		F48CF646205472C100B3F7C0 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		F48CF647205472C100B3F7C0 /* Managed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
-		F48CF64E205472C100B3F7C0 /* RepositoryError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryError.swift; sourceTree = "<group>"; };
 		F48CF64F205472C100B3F7C0 /* DepartmentRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartmentRepository.swift; sourceTree = "<group>"; };
-		F48CF650205472C100B3F7C0 /* EmployeeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeRepository.swift; sourceTree = "<group>"; };
 		F48CF656205472C100B3F7C0 /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		F48CF66C205472C100B3F7C0 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		F48CF66F205472C100B3F7C0 /* DepartmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartmentsViewController.swift; sourceTree = "<group>"; };
 		F48CF675205472C100B3F7C0 /* States.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
 		F48CF676205472C100B3F7C0 /* Reducers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducers.swift; sourceTree = "<group>"; };
 		F48CF677205472C100B3F7C0 /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
+		F48CF6A2205477AB00B3F7C0 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		F48CF6A42054790C00B3F7C0 /* PlaceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRepository.swift; sourceTree = "<group>"; };
+		F48CF6A62054798200B3F7C0 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		F48CF6A9205479A000B3F7C0 /* PlaceMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMO.swift; sourceTree = "<group>"; };
 		FF8ED332EAEDB1689CC4A042 /* Pods_ImageLoader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageLoader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -139,6 +143,7 @@
 			children = (
 				F48CF6132054717500B3F7C0 /* AppDelegate.swift */,
 				F48CF63A205472C100B3F7C0 /* Constants.swift */,
+				F48CF6A82054798700B3F7C0 /* Model */,
 				F48CF674205472C100B3F7C0 /* RE */,
 				F48CF66E205472C100B3F7C0 /* Controllers */,
 				F48CF66B205472C100B3F7C0 /* Extensions */,
@@ -186,6 +191,7 @@
 			children = (
 				F48CF646205472C100B3F7C0 /* CoreDataStack.swift */,
 				F48CF647205472C100B3F7C0 /* Managed.swift */,
+				F48CF6AB205479A400B3F7C0 /* Model */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -194,8 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				F48CF64F205472C100B3F7C0 /* DepartmentRepository.swift */,
-				F48CF64E205472C100B3F7C0 /* RepositoryError.swift */,
-				F48CF650205472C100B3F7C0 /* EmployeeRepository.swift */,
+				F48CF6A42054790C00B3F7C0 /* PlaceRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				F48CF66F205472C100B3F7C0 /* DepartmentsViewController.swift */,
+				F48CF6A2205477AB00B3F7C0 /* MapController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -232,6 +238,22 @@
 				F48CF677205472C100B3F7C0 /* Actions.swift */,
 			);
 			path = RE;
+			sourceTree = "<group>";
+		};
+		F48CF6A82054798700B3F7C0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F48CF6A62054798200B3F7C0 /* Place.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F48CF6AB205479A400B3F7C0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F48CF6A9205479A000B3F7C0 /* PlaceMO.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -437,19 +459,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				F48CF6142054717500B3F7C0 /* AppDelegate.swift in Sources */,
+				F48CF6AA205479A000B3F7C0 /* PlaceMO.swift in Sources */,
 				F48CF69A205472C100B3F7C0 /* DepartmentsViewController.swift in Sources */,
 				F48CF681205472C100B3F7C0 /* Managed.swift in Sources */,
 				F48CF69F205472C100B3F7C0 /* States.swift in Sources */,
 				F48CF698205472C100B3F7C0 /* UITableViewExtensions.swift in Sources */,
+				F48CF6A52054790C00B3F7C0 /* PlaceRepository.swift in Sources */,
 				F48CF67E205472C100B3F7C0 /* SessionManager.swift in Sources */,
 				F48CF61C2054717500B3F7C0 /* ImageLoader.xcdatamodeld in Sources */,
 				F48CF680205472C100B3F7C0 /* CoreDataStack.swift in Sources */,
+				F48CF6A72054798200B3F7C0 /* Place.swift in Sources */,
 				F48CF678205472C100B3F7C0 /* Constants.swift in Sources */,
-				F48CF686205472C100B3F7C0 /* RepositoryError.swift in Sources */,
 				F48CF687205472C100B3F7C0 /* DepartmentRepository.swift in Sources */,
 				F48CF6A1205472C100B3F7C0 /* Actions.swift in Sources */,
-				F48CF688205472C100B3F7C0 /* EmployeeRepository.swift in Sources */,
 				F48CF67C205472C100B3F7C0 /* Request.swift in Sources */,
+				F48CF6A3205477AB00B3F7C0 /* MapController.swift in Sources */,
 				F48CF68C205472C100B3F7C0 /* Identifiable.swift in Sources */,
 				F48CF6A0205472C100B3F7C0 /* Reducers.swift in Sources */,
 			);

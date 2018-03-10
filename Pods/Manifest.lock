@@ -1,18 +1,25 @@
 PODS:
   - Closures (0.3)
+  - GoogleMaps (2.5.0):
+    - GoogleMaps/Maps (= 2.5.0)
+  - GoogleMaps/Base (2.5.0)
+  - GoogleMaps/Maps (2.5.0):
+    - GoogleMaps/Base
   - Promises (2.0)
   - ReSwift (4.0.0)
 
 DEPENDENCIES:
   - Closures
+  - GoogleMaps
   - Promises
   - ReSwift
 
 SPEC CHECKSUMS:
   Closures: 8962b9c2157fc29a0e88d897c1dc19e50bf83f6f
+  GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
   Promises: fd16528f8332744de33db7e1067cd32b3d550466
   ReSwift: f058ef13b46ae5f463f10605ccbbb7fb04424d8d
 
-PODFILE CHECKSUM: f4879f02a75d3a59be5f39cec26be9150db3f90d
+PODFILE CHECKSUM: 481faff08c1cd021abbb55707ab37a278dfb3188
 
 COCOAPODS: 1.2.1

@@ -10,6 +10,7 @@ target 'ImageLoader' do
   pod 'Closures'
   pod 'ReSwift'
   pod 'Promises'
+  pod 'GoogleMaps'
 
   target 'ImageLoaderTests' do
     inherit! :search_paths
