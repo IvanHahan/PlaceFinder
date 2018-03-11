@@ -10,7 +10,10 @@ import Foundation
 import ReSwift
 
 func appReducer(action: Action, state: AppState?) -> AppState {
-    return AppState()
+    return AppState(mapState: mapReducer(action: action, state: state?.mapState))
 }
 
+func mapReducer(action: Action, state: MapState?) -> MapState {
+    return state ?? .places([])
+}
 

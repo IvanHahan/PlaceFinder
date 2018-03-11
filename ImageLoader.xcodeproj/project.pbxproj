@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		307E3860E148F3C4D8B26195 /* Pods_ImageLoader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8ED332EAEDB1689CC4A042 /* Pods_ImageLoader.framework */; };
 		92F40AF7489BFB5F794AB8FF /* Pods_ImageLoaderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB6E38FB14DA1229BCDCC457 /* Pods_ImageLoaderTests.framework */; };
+		F424267C2055438E00D992D9 /* GooglePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = F424267B2055438E00D992D9 /* GooglePlaces.swift */; };
+		F424267E20554E6C00D992D9 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F424267D20554E6C00D992D9 /* LocationService.swift */; };
 		F48CF6142054717500B3F7C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF6132054717500B3F7C0 /* AppDelegate.swift */; };
 		F48CF6192054717500B3F7C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F48CF6172054717500B3F7C0 /* Main.storyboard */; };
 		F48CF61C2054717500B3F7C0 /* ImageLoader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F48CF61A2054717500B3F7C0 /* ImageLoader.xcdatamodeld */; };
@@ -49,6 +51,8 @@
 		9C0A817BE9EC20C317791588 /* Pods-ImageLoaderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageLoaderTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImageLoaderTests/Pods-ImageLoaderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D6A554829F2EBEA98BBE031D /* Pods-ImageLoaderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageLoaderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImageLoaderTests/Pods-ImageLoaderTests.release.xcconfig"; sourceTree = "<group>"; };
 		EB6E38FB14DA1229BCDCC457 /* Pods_ImageLoaderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageLoaderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F424267B2055438E00D992D9 /* GooglePlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlaces.swift; sourceTree = "<group>"; };
+		F424267D20554E6C00D992D9 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		F48CF6102054717500B3F7C0 /* ImageLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48CF6132054717500B3F7C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F48CF6182054717500B3F7C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -118,6 +122,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F424267F20554E7000D992D9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F424267D20554E6C00D992D9 /* LocationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		F48CF6072054717500B3F7C0 = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +155,7 @@
 			children = (
 				F48CF6132054717500B3F7C0 /* AppDelegate.swift */,
 				F48CF63A205472C100B3F7C0 /* Constants.swift */,
+				F424267F20554E7000D992D9 /* Services */,
 				F48CF6A82054798700B3F7C0 /* Model */,
 				F48CF674205472C100B3F7C0 /* RE */,
 				F48CF66E205472C100B3F7C0 /* Controllers */,
@@ -182,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				F48CF641205472C100B3F7C0 /* Request.swift */,
+				F424267B2055438E00D992D9 /* GooglePlaces.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -460,6 +474,7 @@
 			files = (
 				F48CF6142054717500B3F7C0 /* AppDelegate.swift in Sources */,
 				F48CF6AA205479A000B3F7C0 /* PlaceMO.swift in Sources */,
+				F424267E20554E6C00D992D9 /* LocationService.swift in Sources */,
 				F48CF69A205472C100B3F7C0 /* DepartmentsViewController.swift in Sources */,
 				F48CF681205472C100B3F7C0 /* Managed.swift in Sources */,
 				F48CF69F205472C100B3F7C0 /* States.swift in Sources */,
@@ -468,6 +483,7 @@
 				F48CF67E205472C100B3F7C0 /* SessionManager.swift in Sources */,
 				F48CF61C2054717500B3F7C0 /* ImageLoader.xcdatamodeld in Sources */,
 				F48CF680205472C100B3F7C0 /* CoreDataStack.swift in Sources */,
+				F424267C2055438E00D992D9 /* GooglePlaces.swift in Sources */,
 				F48CF6A72054798200B3F7C0 /* Place.swift in Sources */,
 				F48CF678205472C100B3F7C0 /* Constants.swift in Sources */,
 				F48CF687205472C100B3F7C0 /* DepartmentRepository.swift in Sources */,

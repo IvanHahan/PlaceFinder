@@ -17,8 +17,14 @@ let store = Store<AppState>(reducer: appReducer, state: nil)
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let container: NSPersistentContainer = NSPersistentContainer(name: "Places")
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        container.loadPersistentStores { (_, error) in
+            guard error == nil else { fatalError() }
+            let sessionManager = SessionManager(baseUrl: "", config: .default)
+            PlaceRepository.shared = PlaceRepository(sessionManager: sessionManager, context: self.container.newBackgroundContext())
+        }
         GMSServices.provideAPIKey("AIzaSyAybTrBW7gYiFksaYyv3_K11-4Q6JHXsDk")
         return true
     }

@@ -8,8 +8,14 @@
 
 import Foundation
 import ReSwift
+import CoreLocation
 
 struct AppState: StateType {
-    
+    let mapState: MapState
 }
 
+enum MapState: StateType {
+    case places([Place])
+    case location(CLLocation)
+    case loading
+}
