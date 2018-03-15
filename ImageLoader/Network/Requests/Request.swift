@@ -52,7 +52,7 @@ extension Request {
         let fullPath = baseUrl.appending(path)
         var urlComponents = URLComponents(string: fullPath)
         urlComponents?.queryItems = (queryParameters ?? [:]).map { URLQueryItem(name: $0, value: $1) }
-        var request = URLRequest(url: URL(string: fullPath)!)
+        var request = URLRequest(url: (urlComponents?.url)!)
         request.httpBody = body
         request.httpMethod = method.rawValue
         

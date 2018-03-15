@@ -42,7 +42,9 @@ enum MapAction {
         return { state, store in
             PlaceRepository.shared.loadPlaces(types: types, location: location.coordinate, radius: radius).then({ places in
                 store.dispatch(UpdatePlaces(places: places))
-            })
+            }).catch { error in
+                store.dispatch(Failure(error: error))
+            }
             return Loading()
         }
     }

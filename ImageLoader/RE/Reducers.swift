@@ -14,6 +14,13 @@ func appReducer(action: Action, state: AppState?) -> AppState {
 }
 
 func mapReducer(action: Action, state: MapState?) -> MapState {
-    return state ?? .places([])
+    switch action {
+    case let action as MapAction.UpdatePlaces:
+        return .places(action.places)
+    case let action as MapAction.UpdateLocation:
+        return .location(action.location)
+    default:
+        return state ?? .places([])
+    }
 }
 

@@ -13,12 +13,18 @@ import GoogleMaps
 class MapController: UIViewController {
     
     @IBOutlet fileprivate weak var mapView: GMSMapView!
-    fileprivate var places: [Place] = []
+    
+    fileprivate var places: Set<Place> = Set()
+    fileprivate var needZoomToUser = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        setupStore()
+        mapView.isMyLocationEnabled = true
+    }
+    
+    fileprivate func setupStore() {
         store.subscribe(self) {
             $0.select {
                 $0.mapState
@@ -36,13 +42,20 @@ extension MapController: StoreSubscriber {
         switch state {
         case .places(let places):
             for place in places {
+                guard !self.places.contains(place) else { continue }
+                self.places.insert(place)
                 let marker = GMSMarker(position: place.coordinate)
+                marker.position = place.coordinate
                 marker.title = place.name
+                marker.appearAnimation = .pop
                 marker.map = mapView
             }
-            self.places.append(contentsOf: places)
         case .location(let location):
-            store.dispatch(MapAction.loadPlaces(location: location, types: []))
+            if needZoomToUser {
+                mapView.camera = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 14)
+                needZoomToUser = false
+                store.dispatch(MapAction.loadPlaces(location: location, types: ["cafe", "pharmacy", "restaurant"]))
+            }
         case .loading:
             break
         }

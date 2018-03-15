@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 
 private let baseUrl = "https://maps.googleapis.com/maps/api/place"
-private let apiKey = "AIzaSyAU4-yR82XU7l4B_4i4zHlP0j3dWEk0IbU"
+private let apiKey = "AIzaSyDyjNIrohQo-vQ0vsIYg_rS9f1mQwlWSqw"
 
 extension CLLocationCoordinate2D {
     var parameterStringRepresentation: String {

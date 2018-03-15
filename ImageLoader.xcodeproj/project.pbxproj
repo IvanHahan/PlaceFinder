@@ -13,7 +13,7 @@
 		F424267E20554E6C00D992D9 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F424267D20554E6C00D992D9 /* LocationService.swift */; };
 		F48CF6142054717500B3F7C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF6132054717500B3F7C0 /* AppDelegate.swift */; };
 		F48CF6192054717500B3F7C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F48CF6172054717500B3F7C0 /* Main.storyboard */; };
-		F48CF61C2054717500B3F7C0 /* ImageLoader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F48CF61A2054717500B3F7C0 /* ImageLoader.xcdatamodeld */; };
+		F48CF61C2054717500B3F7C0 /* Places.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F48CF61A2054717500B3F7C0 /* Places.xcdatamodeld */; };
 		F48CF61E2054717500B3F7C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F48CF61D2054717500B3F7C0 /* Assets.xcassets */; };
 		F48CF6212054717500B3F7C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F48CF61F2054717500B3F7C0 /* LaunchScreen.storyboard */; };
 		F48CF62C2054717500B3F7C0 /* ImageLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF62B2054717500B3F7C0 /* ImageLoaderTests.swift */; };
@@ -168,7 +168,7 @@
 				F48CF61D2054717500B3F7C0 /* Assets.xcassets */,
 				F48CF61F2054717500B3F7C0 /* LaunchScreen.storyboard */,
 				F48CF6222054717500B3F7C0 /* Info.plist */,
-				F48CF61A2054717500B3F7C0 /* ImageLoader.xcdatamodeld */,
+				F48CF61A2054717500B3F7C0 /* Places.xcdatamodeld */,
 			);
 			path = ImageLoader;
 			sourceTree = "<group>";
@@ -381,9 +381,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ImageLoader/Pods-ImageLoader-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -396,13 +399,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ImageLoader-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6AF1F7D8C2DE6A0825B4C556 /* [CP] Embed Pods Frameworks */ = {
@@ -441,13 +447,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ImageLoaderTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F08D45B57C39B761EE7FEC32 /* [CP] Embed Pods Frameworks */ = {
@@ -456,9 +465,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ImageLoader/Pods-ImageLoader-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Closures/Closures.framework",
+				"${BUILT_PRODUCTS_DIR}/Promises/Promise.framework",
+				"${BUILT_PRODUCTS_DIR}/ReSwift/ReSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Closures.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Promise.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -481,7 +497,7 @@
 				F48CF698205472C100B3F7C0 /* UITableViewExtensions.swift in Sources */,
 				F48CF6A52054790C00B3F7C0 /* PlaceRepository.swift in Sources */,
 				F48CF67E205472C100B3F7C0 /* SessionManager.swift in Sources */,
-				F48CF61C2054717500B3F7C0 /* ImageLoader.xcdatamodeld in Sources */,
+				F48CF61C2054717500B3F7C0 /* Places.xcdatamodeld in Sources */,
 				F48CF680205472C100B3F7C0 /* CoreDataStack.swift in Sources */,
 				F424267C2055438E00D992D9 /* GooglePlaces.swift in Sources */,
 				F48CF6A72054798200B3F7C0 /* Place.swift in Sources */,
@@ -646,6 +662,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 25M433F2XY;
 				INFOPLIST_FILE = ImageLoader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.IvanHahan.ImageLoader;
@@ -661,6 +678,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 25M433F2XY;
 				INFOPLIST_FILE = ImageLoader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.IvanHahan.ImageLoader;
@@ -737,13 +755,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		F48CF61A2054717500B3F7C0 /* ImageLoader.xcdatamodeld */ = {
+		F48CF61A2054717500B3F7C0 /* Places.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				F48CF61B2054717500B3F7C0 /* ImageLoader.xcdatamodel */,
 			);
 			currentVersion = F48CF61B2054717500B3F7C0 /* ImageLoader.xcdatamodel */;
-			path = ImageLoader.xcdatamodeld;
+			path = Places.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
