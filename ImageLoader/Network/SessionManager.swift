@@ -54,6 +54,7 @@ class SessionManager {
                 if let error = error {
                     reject(error)
                 } else if let data = data {
+                    debugPrint(try! JSONSerialization.jsonObject(with: data, options: []))
                     if let model = request.map(from: data) {
                         handle(model)
                     } else {

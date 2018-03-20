@@ -25,7 +25,7 @@ class PlaceRepository {
     }
     
     func loadPlaces(types: [String], location: CLLocationCoordinate2D, radius: Int = 500) -> Promise<[Place]> {
-        return sessionManager.execute(GooglePlacesRequest.Search(types: types, location: location, radius: radius))
+        return sessionManager.execute(GooglePlacesRequest.Search(types: types, location: location, radius: radius)).then { $0.data }
     }
     
     

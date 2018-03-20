@@ -18,20 +18,28 @@ struct Location: Decodable {
     }
 }
 
+struct Geometry: Decodable {
+    let location: Location
+    
+    private enum CodingKeys: String, CodingKey {
+        case location
+    }
+}
+
 struct Place: Decodable, Equatable, Hashable {
     let id: String
     let name: String
     let icon: URL
     let types: [String]
-    let location: Location
+    let geometry: Geometry
     let address: String
     
     var coordinate: CLLocationCoordinate2D {
-        return CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+        return CLLocationCoordinate2D(latitude: geometry.location.latitude, longitude: geometry.location.longitude)
     }
     
     private enum CodingKeys: String, CodingKey {
-        case id, name, icon, types, location = "geometry.location", address = "vicinity"
+        case id, name, icon, types, geometry, address = "vicinity"
     }
     
     public static func ==(lhs: Place, rhs: Place) -> Bool {
@@ -40,5 +48,15 @@ struct Place: Decodable, Equatable, Hashable {
     
     var hashValue: Int {
         return id.hashValue
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(String.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        icon = try container.decode(URL.self, forKey: .icon)
+        types = try container.decode([String].self, forKey: .types)
+        geometry = try container.decode(Geometry.self, forKey: .geometry)
+        address = try container.decode(String.self, forKey: .address)
     }
 }

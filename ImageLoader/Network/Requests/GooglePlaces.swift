@@ -22,8 +22,7 @@ enum GooglePlacesRequest {
     
     struct Search: DecodableResultRequest {
         
-        
-        typealias Model = [Place]
+        typealias Model = GoogleRequestResponse<[Place]>
         
         var path: String {
             return "/nearbysearch/json?"
