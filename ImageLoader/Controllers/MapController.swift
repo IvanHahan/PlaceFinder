@@ -26,6 +26,13 @@ class MapController: UIViewController {
         mapView.delegate = self
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if let vc = segue.destination as? PlaceDetailsController, let place = sender as? Place {
+            vc.place = place
+        }
+    }
+    
     fileprivate func setupStore() {
         store.subscribe(self) {
             $0.select {
@@ -46,10 +53,11 @@ extension MapController: StoreSubscriber {
             for place in places {
                 guard !self.places.contains(place) else { continue }
                 self.places.insert(place)
-                let marker = GMSMarker(position: place.coordinate)
+                let marker = MapMarker(position: place.coordinate)
                 marker.title = place.name
                 marker.appearAnimation = .pop
                 marker.map = mapView
+                marker.id = place.id
                 URLSession.shared.dataTask(with: place.icon, completionHandler: { (data, response, error) in
                     
                     if error != nil {
@@ -96,5 +104,11 @@ extension MapController: GMSMapViewDelegate {
         store.dispatch(MapAction.loadPlaces(location: CLLocation(latitude: coord.latitude, longitude: coord.longitude),
                                             types: ["cafe", "pharmacy", "restaurant"]))
         lastPosition = coord
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        guard let marker = marker as? MapMarker else { return }
+        let place = places.first(where: { marker.id == $0.id })
+        performSegue(withIdentifier: "PlaceDetails", sender: place)
     }
 }

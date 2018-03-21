@@ -18,6 +18,25 @@ struct Location: Decodable {
     }
 }
 
+struct Photo: Decodable {
+    let reference: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case reference = "photo_reference"
+    }
+    
+    func url(apiKey: String, baseUrl: String) -> URL {
+        var urlComponents = URLComponents(string: baseUrl.appending("/photo"))
+        urlComponents?.queryItems =  [
+            URLQueryItem(name: "photo_reference", value: reference),
+            URLQueryItem(name: "key", value: apiKey),
+            URLQueryItem(name: "maxheight", value: "1000"),
+            URLQueryItem(name: "maxwidth", value: "1000")
+        ]
+        return urlComponents!.url!
+    }
+}
+
 struct Geometry: Decodable {
     let location: Location
     
@@ -33,13 +52,14 @@ struct Place: Decodable, Equatable, Hashable {
     let types: [String]
     let geometry: Geometry
     let address: String?
+    let photos: [Photo]
     
     var coordinate: CLLocationCoordinate2D {
         return CLLocationCoordinate2D(latitude: geometry.location.latitude, longitude: geometry.location.longitude)
     }
     
     private enum CodingKeys: String, CodingKey {
-        case id, name, icon, types, geometry, address = "vicinity"
+        case id, name, icon, types, geometry, photos, address = "vicinity"
     }
     
     public static func ==(lhs: Place, rhs: Place) -> Bool {
@@ -58,5 +78,6 @@ struct Place: Decodable, Equatable, Hashable {
         types = try container.decode([String].self, forKey: .types)
         geometry = try container.decode(Geometry.self, forKey: .geometry)
         address = try? container.decode(String.self, forKey: .address)
+        photos = (try? container.decode([Photo].self, forKey: .photos)) ?? []
     }
 }

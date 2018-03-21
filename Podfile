@@ -11,6 +11,7 @@ target 'ImageLoader' do
   pod 'ReSwift'
   pod 'Promises'
   pod 'GoogleMaps'
+  pod 'Kingfisher'
 
   target 'ImageLoaderTests' do
     inherit! :search_paths

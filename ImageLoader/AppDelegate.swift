@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         container.loadPersistentStores { (_, error) in
             guard error == nil else { fatalError() }
-            let sessionManager = SessionManager(baseUrl: "https://maps.googleapis.com/maps/api/place", config: .default)
+            let sessionManager = SessionManager(baseUrl: GooglePlacesBaseUrl, config: .default)
             PlaceRepository.shared = PlaceRepository(sessionManager: sessionManager, context: self.container.newBackgroundContext())
         }
         GMSServices.provideAPIKey("AIzaSyAybTrBW7gYiFksaYyv3_K11-4Q6JHXsDk")
