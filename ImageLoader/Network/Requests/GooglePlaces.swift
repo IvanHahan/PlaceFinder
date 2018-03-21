@@ -33,7 +33,7 @@ enum GooglePlacesRequest {
                 "key": key,
                 "location": location.parameterStringRepresentation,
                 "radius": radius.description,
-                "types": types.joined(separator: ",")
+                "types": types.joined(separator: "|")
             ]
         }
         

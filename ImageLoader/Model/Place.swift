@@ -14,7 +14,7 @@ struct Location: Decodable {
     let longitude: Double
     
     private enum CodingKeys: String, CodingKey {
-        case latitude = "lng", longitude = "lat"
+        case latitude = "lat", longitude = "lng"
     }
 }
 
@@ -32,7 +32,7 @@ struct Place: Decodable, Equatable, Hashable {
     let icon: URL
     let types: [String]
     let geometry: Geometry
-    let address: String
+    let address: String?
     
     var coordinate: CLLocationCoordinate2D {
         return CLLocationCoordinate2D(latitude: geometry.location.latitude, longitude: geometry.location.longitude)
@@ -57,6 +57,6 @@ struct Place: Decodable, Equatable, Hashable {
         icon = try container.decode(URL.self, forKey: .icon)
         types = try container.decode([String].self, forKey: .types)
         geometry = try container.decode(Geometry.self, forKey: .geometry)
-        address = try container.decode(String.self, forKey: .address)
+        address = try? container.decode(String.self, forKey: .address)
     }
 }
