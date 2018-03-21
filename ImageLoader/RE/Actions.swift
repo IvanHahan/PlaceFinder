@@ -48,4 +48,13 @@ enum MapAction {
             return Loading()
         }
     }
+    
+    static func addToFavorites(place: Place) -> (AppState, Store<AppState>) -> Action? {
+        return { state, store in
+            PlaceRepository.shared.addToFavorites(place).catch { error in
+                store.dispatch(Failure(error: error))
+            }
+            return Loading()
+        }
+    }
 }

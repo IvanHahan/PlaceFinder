@@ -33,6 +33,12 @@ extension Managed where Self: NSManagedObject {
         return request
     }
     
+    static func count(in context: NSManagedObjectContext) -> Int {
+        return try! context.fetch(Self.fetchRequest {
+            $0.includesPropertyValues = false
+        }).count
+    }
+    
     static func findOrFetchFirst(in context: NSManagedObjectContext) -> Self? {
         if let last = context.registeredObjects.first(where: {$0 is Self}) as? Self {
             return last

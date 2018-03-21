@@ -28,6 +28,29 @@ class PlaceRepository {
         return sessionManager.execute(GooglePlacesRequest.Search(types: types, location: location, radius: radius)).then { $0.data }
     }
     
-    
-    
+    func addToFavorites(_ place: Place) -> Promise<Void> {
+        guard try! context.fetch(PlaceMO.fetchRequest(configured: { request in
+            request.includesPropertyValues = false
+            request.predicate = NSPredicate(format: "id == %@", place.id)
+        })).isEmpty else {
+            return Promise()
+        }
+        return Promise { fulfill, reject in
+            self.context.perform {
+                do {
+                    let placeMO: PlaceMO = self.context.new()
+                    placeMO.address = place.address
+                    placeMO.id = place.id
+                    placeMO.latitude = place.coordinate.latitude
+                    placeMO.longitude = place.coordinate.longitude
+                    placeMO.name = place.name
+                    placeMO.photoRef = place.photos.last?.reference
+                    try self.context.save()
+                    fulfill(())
+                } catch {
+                    reject(error)
+                }
+            }
+        }
+    }
 }
