@@ -50,6 +50,21 @@ extension MapController: StoreSubscriber {
                 marker.title = place.name
                 marker.appearAnimation = .pop
                 marker.map = mapView
+                URLSession.shared.dataTask(with: place.icon, completionHandler: { (data, response, error) in
+                    
+                    if error != nil {
+                        print(error!)
+                        return
+                    }
+                    
+                    DispatchQueue.global().async {
+                        if let image = UIImage(data: data!) {
+                            DispatchQueue.main.async {
+                                marker.icon = image
+                            }
+                        }
+                    }
+                }).resume()
             }
         case .location(let location):
             if needZoomToUser {
@@ -65,19 +80,21 @@ extension MapController: StoreSubscriber {
 
 extension MapController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-        if let coordinate = lastPosition {
-            let delta = CLLocation(latitude: coordinate.latitude,
-                                   longitude: coordinate.longitude).distance(from: CLLocation(latitude: position.target.latitude,
-                                                                                              longitude: position.target.longitude))
-            if delta.magnitude > 500 {
-                store.dispatch(MapAction.loadPlaces(location: CLLocation(latitude: position.target.latitude, longitude: position.target.longitude),
-                                                types: ["cafe", "pharmacy", "restaurant"]))
-                lastPosition = position.target
-            }
-        } else {
-            store.dispatch(MapAction.loadPlaces(location: CLLocation(latitude: position.target.latitude, longitude: position.target.longitude),
-                                                types: ["cafe", "pharmacy", "restaurant"]))
-            lastPosition = position.target
+        guard let coordinate = lastPosition else {
+            loadPlaces(at: position.target)
+            return
         }
+        let delta = CLLocation(latitude: coordinate.latitude,
+                               longitude: coordinate.longitude).distance(from: CLLocation(latitude: position.target.latitude,
+                                                                                          longitude: position.target.longitude))
+        if delta.magnitude > 500 {
+            loadPlaces(at: position.target)
+        }
+    }
+    
+    private func loadPlaces(at coord: CLLocationCoordinate2D) {
+        store.dispatch(MapAction.loadPlaces(location: CLLocation(latitude: coord.latitude, longitude: coord.longitude),
+                                            types: ["cafe", "pharmacy", "restaurant"]))
+        lastPosition = coord
     }
 }
