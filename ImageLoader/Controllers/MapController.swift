@@ -39,8 +39,8 @@ class MapController: UIViewController {
                 $0.mapState
             }
         }
-        store.dispatch(MapAction.requestLocationAuthorization)
-        store.dispatch(MapAction.startListeningLocation)
+        store.dispatch(requestLocationAuthorization)
+        store.dispatch(startListeningLocation)
     }
 
 }
@@ -89,19 +89,19 @@ extension MapController: StoreSubscriber {
 extension MapController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
         guard let coordinate = lastPosition else {
-            loadPlaces(at: position.target)
+            loadPlacesNearby(at: position.target)
             return
         }
         let delta = CLLocation(latitude: coordinate.latitude,
                                longitude: coordinate.longitude).distance(from: CLLocation(latitude: position.target.latitude,
                                                                                           longitude: position.target.longitude))
         if delta.magnitude > 500 {
-            loadPlaces(at: position.target)
+            loadPlacesNearby(at: position.target)
         }
     }
     
-    private func loadPlaces(at coord: CLLocationCoordinate2D) {
-        store.dispatch(MapAction.loadPlaces(location: CLLocation(latitude: coord.latitude, longitude: coord.longitude),
+    private func loadPlacesNearby(at coord: CLLocationCoordinate2D) {
+        store.dispatch(loadPlaces(location: CLLocation(latitude: coord.latitude, longitude: coord.longitude),
                                             types: ["cafe", "pharmacy", "restaurant"]))
         lastPosition = coord
     }

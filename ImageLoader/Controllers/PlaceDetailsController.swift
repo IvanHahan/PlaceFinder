@@ -28,6 +28,6 @@ class PlaceDetailsController: UIViewController {
 
     // MARK: - Actions
     @IBAction func didPressAddToFavorites(_ sender: Any) {
-        store.dispatch(MapAction.addToFavorites(place: place))
+        store.dispatch(addToFavorites(place: place))
     }
 }

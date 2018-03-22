@@ -12,10 +12,20 @@ import CoreLocation
 
 struct AppState: StateType {
     let mapState: MapState
+    let placeDetailsState: PlaceDetailsState
+    let favoritesState: FavoritesState
 }
 
 enum MapState: StateType {
     case places([Place])
     case location(CLLocation)
     case loading
+}
+
+enum PlaceDetailsState: StateType {
+    case `default`, saved(Place)
+}
+
+enum FavoritesState: StateType {
+    case favorites([Place])
 }
