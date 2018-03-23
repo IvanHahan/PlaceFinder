@@ -54,6 +54,11 @@ extension FavoritesController: StoreSubscriber {
         case .favorites(let places):
             self.places = places
             tableView.reloadData()
+        case .remove(let place):
+            guard let index = places.index(of: place) else { return }
+            places.remove(at: index)
+            tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+        default:()
         }
     }
 }
@@ -77,5 +82,17 @@ extension FavoritesController: UITableViewDataSource {
 extension FavoritesController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "PlaceDetails", sender: places[indexPath.row])
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            store.dispatch(removeFromFavorite(place: places[indexPath.row]))
+        default:()
+        }
     }
 }

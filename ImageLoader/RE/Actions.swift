@@ -46,7 +46,6 @@ func loadPlaces(location: CLLocation, types: [String], radius: Int = 500) -> (Ap
     }
 }
 
-
 func addToFavorites(place: Place) -> (AppState, Store<AppState>) -> Action? {
     return { state, store in
         PlaceRepository.shared.addToFavorites(place).then {
@@ -61,6 +60,18 @@ func addToFavorites(place: Place) -> (AppState, Store<AppState>) -> Action? {
         return Loading()
     }
 }
+
+struct RemoveFavorite: Action { let place: Place }
+
+func removeFromFavorite(place: Place) -> (AppState, Store<AppState>) -> Action? {
+    return { state, store in
+        PlaceRepository.shared.removeFavorite(place: place).then { (place) in
+            store.dispatch(RemoveFavorite(place: place))
+        }
+        return Loading()
+    }
+}
+
 
 struct SetFavorites: Action { let places: [Place] }
 

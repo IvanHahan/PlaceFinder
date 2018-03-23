@@ -41,10 +41,27 @@ class PlaceRepository {
                                      icon: mo.icon!,
                                      types: [],
                                      location: Location(latitude: mo.latitude, longitude: mo.longitude),
-                                     address: mo.address!,
-                                     photoRef: mo.photoRef!)
+                                     address: mo.address,
+                                     photoRef: mo.photoRef)
                     }
                     fulfill(places)
+                } catch {
+                    reject(error)
+                }
+            }
+        }
+    }
+    
+    func removeFavorite(place: Place) -> Promise<Place> {
+        return Promise { [unowned self] fulfill, reject in
+            self.context.perform {
+                do {
+                    guard let object = try self.context.fetch(PlaceMO.fetchRequest(configured: { request in
+                        request.predicate = NSPredicate(format: "id == %@", place.id)
+                    })).first else { return }
+                    self.context.delete(object)
+                    try self.context.save()
+                    fulfill(place)
                 } catch {
                     reject(error)
                 }

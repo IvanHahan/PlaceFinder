@@ -30,10 +30,8 @@ func placeDetailsReducer(action: Action, state: PlaceDetailsState?) -> PlaceDeta
     switch action {
     case let action as Success<Place>:
         return .saved(action.data)
-    case is Default:
-        return .default
     default:
-        return state ?? .default
+        return .default
     }
 }
 
@@ -41,8 +39,10 @@ func favoritesReducer(action: Action, state: FavoritesState?) -> FavoritesState 
     switch action {
     case let action as SetFavorites:
         return .favorites(action.places)
+    case let action as RemoveFavorite:
+        return .remove(action.place)
     default:
-        return state ?? .favorites([])
+        return .default
     }
 }
 

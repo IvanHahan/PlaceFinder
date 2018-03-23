@@ -27,5 +27,5 @@ enum PlaceDetailsState: StateType {
 }
 
 enum FavoritesState: StateType {
-    case favorites([Place])
+    case `default`, favorites([Place]), remove(Place)
 }
