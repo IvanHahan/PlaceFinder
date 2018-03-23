@@ -59,9 +59,10 @@ func addToFavorites(place: Place) -> (AppState, Store<AppState>) -> Action? {
 
 struct SetFavorites: Action { let places: [Place] }
 
-func loadFavorites() -> (AppState, Store<AppState>) -> Action? {
-    return { state, store in
-        
-        return Loading()
+func loadFavorites(state: AppState, store: Store<AppState>) -> Action? {
+    PlaceRepository.shared.loadFavorites().then { places in
+        store.dispatch(SetFavorites(places: places))
     }
+    return Loading()
 }
+

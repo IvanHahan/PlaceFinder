@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Favorites Controller-->
+        <!--Favorites-->
         <scene sceneID="6eq-ib-KGK">
             <objects>
                 <viewController id="xyv-8m-cbe" customClass="FavoritesController" customModule="ImageLoader" customModuleProvider="target" sceneMemberID="viewController">
@@ -32,9 +32,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Lbh-hn-1gL"/>
                     </view>
-                    <navigationItem key="navigationItem" id="FQZ-sg-14R"/>
+                    <navigationItem key="navigationItem" title="Favorites" id="a2k-DR-OuN"/>
                     <connections>
                         <outlet property="tableView" destination="Dd3-mO-TAF" id="bnU-Kx-oBm"/>
+                        <segue destination="7bH-Wv-Mky" kind="show" identifier="PlaceDetails" id="Y1b-nD-tMV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Skw-EO-UO4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -190,4 +191,7 @@
             <point key="canvasLocation" x="696" y="38.680659670164921"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Y1b-nD-tMV"/>
+    </inferredMetricsTieBreakers>
 </document>

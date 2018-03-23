@@ -70,6 +70,16 @@ struct Place: Decodable, Equatable, Hashable {
         return id.hashValue
     }
     
+    init(id: String, name: String, icon: URL, types: [String], location: Location, address: String, photoRef: String) {
+        self.id = id
+        self.name = name
+        self.icon = icon
+        self.types = types
+        self.geometry = Geometry(location: location)
+        self.address = address
+        self.photos = [Photo(reference: photoRef)]
+    }
+    
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(String.self, forKey: .id)

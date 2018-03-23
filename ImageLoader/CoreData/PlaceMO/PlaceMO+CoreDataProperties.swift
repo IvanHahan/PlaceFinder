@@ -22,5 +22,6 @@ extension PlaceMO {
     @NSManaged public var name: String?
     @NSManaged public var photoRef: String?
     @NSManaged public var id: String?
+    @NSManaged public var icon: URL?
 
 }

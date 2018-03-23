@@ -11,5 +11,9 @@ import CoreData
 
 @objc(PlaceMO)
 final public class PlaceMO: NSManagedObject, Managed {
-
+    static var defaultSortDescriptors: [NSSortDescriptor] {
+        return [
+            NSSortDescriptor(key: #keyPath(id), ascending: true)
+        ]
+    }
 }

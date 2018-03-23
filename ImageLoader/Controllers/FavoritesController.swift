@@ -18,8 +18,7 @@ class FavoritesController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
-        tableView.delegate = self
+        setupTableView()
         
         store.subscribe(self) {
             $0.select {
@@ -27,10 +26,19 @@ class FavoritesController: UIViewController {
             }
         }
         
-        store.dispatch(loadFavorites())
     }
     
+    private func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UITableViewCell.self)
+        tableView.tableFooterView = UIView()
+    }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        store.dispatch(loadFavorites)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
