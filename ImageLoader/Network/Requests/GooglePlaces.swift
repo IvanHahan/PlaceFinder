@@ -9,9 +9,6 @@
 import Foundation
 import CoreLocation
 
-private let baseUrl = "https://maps.googleapis.com/maps/api/place"
-private let apiKey = "AIzaSyDyjNIrohQo-vQ0vsIYg_rS9f1mQwlWSqw"
-
 extension CLLocationCoordinate2D {
     var parameterStringRepresentation: String {
         return "\(latitude),\(longitude)"
@@ -37,7 +34,7 @@ enum GooglePlacesRequest {
             ]
         }
         
-        let key: String = apiKey
+        let key: String = GoogleAPIKey
         let types: [String]
         let location: CLLocationCoordinate2D
         let radius: Int

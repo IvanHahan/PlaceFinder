@@ -29,7 +29,6 @@
 		F48CF67E205472C100B3F7C0 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF643205472C100B3F7C0 /* SessionManager.swift */; };
 		F48CF680205472C100B3F7C0 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF646205472C100B3F7C0 /* CoreDataStack.swift */; };
 		F48CF681205472C100B3F7C0 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF647205472C100B3F7C0 /* Managed.swift */; };
-		F48CF687205472C100B3F7C0 /* DepartmentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF64F205472C100B3F7C0 /* DepartmentRepository.swift */; };
 		F48CF68C205472C100B3F7C0 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF656205472C100B3F7C0 /* Identifiable.swift */; };
 		F48CF698205472C100B3F7C0 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF66C205472C100B3F7C0 /* UITableViewExtensions.swift */; };
 		F48CF69F205472C100B3F7C0 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF675205472C100B3F7C0 /* States.swift */; };
@@ -80,7 +79,6 @@
 		F48CF643205472C100B3F7C0 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		F48CF646205472C100B3F7C0 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		F48CF647205472C100B3F7C0 /* Managed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
-		F48CF64F205472C100B3F7C0 /* DepartmentRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartmentRepository.swift; sourceTree = "<group>"; };
 		F48CF656205472C100B3F7C0 /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		F48CF66C205472C100B3F7C0 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		F48CF675205472C100B3F7C0 /* States.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 		F48CF645205472C100B3F7C0 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				925D81FB2062B0740094431B /* PlaceMO */,
 				F48CF646205472C100B3F7C0 /* CoreDataStack.swift */,
 				F48CF647205472C100B3F7C0 /* Managed.swift */,
 				F48CF6AB205479A400B3F7C0 /* Model */,
@@ -243,7 +240,6 @@
 		F48CF64D205472C100B3F7C0 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				F48CF64F205472C100B3F7C0 /* DepartmentRepository.swift */,
 				F48CF6A42054790C00B3F7C0 /* PlaceRepository.swift */,
 			);
 			path = Repositories;
@@ -297,6 +293,7 @@
 		F48CF6AB205479A400B3F7C0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				925D81FB2062B0740094431B /* PlaceMO */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -537,7 +534,6 @@
 				F424267C2055438E00D992D9 /* GooglePlaces.swift in Sources */,
 				F48CF6A72054798200B3F7C0 /* Place.swift in Sources */,
 				F48CF678205472C100B3F7C0 /* Constants.swift in Sources */,
-				F48CF687205472C100B3F7C0 /* DepartmentRepository.swift in Sources */,
 				925D81FF2062B0A90094431B /* PlaceMO+CoreDataClass.swift in Sources */,
 				92FBFDEE20650E9F008F5B6F /* NotificationService.swift in Sources */,
 				F48CF6A1205472C100B3F7C0 /* Actions.swift in Sources */,
