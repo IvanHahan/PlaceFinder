@@ -18,7 +18,7 @@ class LocationService: NSObject {
     var didChangeLocation: Closure<CLLocation>?
     
     var isAuthorized: Bool {
-        return CLLocationManager.authorizationStatus() == .authorizedWhenInUse
+        return CLLocationManager.authorizationStatus() == .authorizedAlways
     }
     
     var currentLocation: CLLocation? {
@@ -31,11 +31,17 @@ class LocationService: NSObject {
     }
     
     func requestAuthorization() {
-        manager.requestWhenInUseAuthorization()
+        manager.requestAlwaysAuthorization()
     }
     
-    func startObservingLocation() {
-        manager.startUpdatingLocation()
+    func startObservingLocation(completion: @escaping Closure<CLLocation>) {
+        self.didChangeLocation = completion
+        if isAuthorized {
+            manager.startUpdatingLocation()
+            manager.requestLocation()
+        } else {
+            manager.requestAlwaysAuthorization()
+        }
     }
     
     func stopObservingLocation() {
@@ -47,7 +53,7 @@ extension LocationService: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         guard status == .authorizedWhenInUse else { return }
-        startObservingLocation()
+        manager.startUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -55,6 +61,10 @@ extension LocationService: CLLocationManagerDelegate {
         didChangeLocation?(location)
         didChangeLocation = nil
         stopObservingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
     }
 }
 

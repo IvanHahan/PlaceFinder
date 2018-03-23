@@ -9,6 +9,7 @@
 import Foundation
 import CoreLocation
 import ReSwift
+import UserNotifications
 
 struct Loading: Action {}
 struct Failure: Action { let error: Error }
@@ -28,7 +29,7 @@ func requestLocationAuthorization(state: AppState, store: Store<AppState>) -> Ac
 }
 
 func startListeningLocation(state: AppState, store: Store<AppState>) -> Action? {
-    LocationService.shared.didChangeLocation = { location in
+    LocationService.shared.startObservingLocation { location in
         store.dispatch(UpdateLocation(location: location))
     }
     return LocationService.shared.currentLocation == nil ? Dumb() : UpdateLocation(location: LocationService.shared.currentLocation!)
@@ -53,6 +54,10 @@ func addToFavorites(place: Place) -> (AppState, Store<AppState>) -> Action? {
             }.catch { error in
             store.dispatch(Failure(error: error))
         }
+        
+        let region = CLCircularRegion(center: place.coordinate, radius: 1000, identifier: place.name)
+        NotificationService.scheduleLocationNotification(title: "Favorite place nearby", body: place.name, region: region)
+        
         return Loading()
     }
 }

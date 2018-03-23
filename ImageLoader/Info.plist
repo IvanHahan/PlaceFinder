@@ -20,6 +20,8 @@
 	<string>1</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Bla</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Bla</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

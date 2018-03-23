@@ -42,7 +42,7 @@
             </objects>
             <point key="canvasLocation" x="1464.8" y="37.331334332833585"/>
         </scene>
-        <!--Map Controller-->
+        <!--Map-->
         <scene sceneID="Ky4-WD-gQE">
             <objects>
                 <viewController storyboardIdentifier="MapController" id="5zU-hJ-ITX" customClass="MapController" customModule="ImageLoader" customModuleProvider="target" sceneMemberID="viewController">
@@ -64,7 +64,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="e0r-Rg-Y4E"/>
                     </view>
-                    <navigationItem key="navigationItem" id="K0C-Yb-Hlj"/>
+                    <navigationItem key="navigationItem" title="Map" id="l0P-52-1WU"/>
                     <connections>
                         <outlet property="mapView" destination="hbn-YP-LRj" id="avQ-6C-xiH"/>
                         <segue destination="7bH-Wv-Mky" kind="show" identifier="PlaceDetails" id="NyU-00-rxZ"/>
@@ -192,6 +192,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Y1b-nD-tMV"/>
+        <segue reference="NyU-00-rxZ"/>
     </inferredMetricsTieBreakers>
 </document>

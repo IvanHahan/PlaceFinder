@@ -39,7 +39,6 @@ class MapController: UIViewController {
                 $0.mapState
             }
         }
-        store.dispatch(requestLocationAuthorization)
         store.dispatch(startListeningLocation)
     }
 
@@ -76,7 +75,7 @@ extension MapController: StoreSubscriber {
             }
         case .location(let location):
             if needZoomToUser {
-                mapView.camera = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 14)
+                mapView.camera = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 17)
                 needZoomToUser = false
             }
         case .loading:
