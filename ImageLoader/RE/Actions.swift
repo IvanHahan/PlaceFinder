@@ -14,7 +14,7 @@ struct Loading: Action {}
 struct Failure: Action { let error: Error }
 struct Success<T>: Action { let data: T }
 struct Dumb: Action {}
-
+struct Default: Action {}
 
 struct UpdateLocation: Action { let location: CLLocation }
 

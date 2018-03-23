@@ -30,6 +30,8 @@ func placeDetailsReducer(action: Action, state: PlaceDetailsState?) -> PlaceDeta
     switch action {
     case let action as Success<Place>:
         return .saved(action.data)
+    case is Default:
+        return .default
     default:
         return state ?? .default
     }

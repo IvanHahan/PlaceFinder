@@ -67,7 +67,9 @@ extension FavoritesController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(resource: UITableViewCell.self, for: indexPath)
         cell.textLabel?.text = places[indexPath.row].name
         cell.detailTextLabel?.text = places[indexPath.row].address
-        cell.imageView?.kf.setImage(with: places[indexPath.row].icon)
+        cell.imageView?.kf.setImage(with: places[indexPath.row].icon) { [unowned self] _, _, _, _ in
+            self.tableView.reloadRows(at: [indexPath], with: .none)
+        }
         return cell
     }
 }

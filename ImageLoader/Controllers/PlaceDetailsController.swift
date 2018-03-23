@@ -49,6 +49,7 @@ extension PlaceDetailsController: StoreSubscriber {
             let alert = UIAlertController(title: "Success", message: nil, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
+            store.dispatch(Default())
         default: ()
         }
     }
