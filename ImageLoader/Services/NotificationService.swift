@@ -18,10 +18,13 @@ class NotificationService {
         content.body = body
         content.sound = UNNotificationSound.default()
         
+        region.notifyOnEntry = true
+        
         let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
         
         let request = UNNotificationRequest(identifier: "Favorite", content: content, trigger: trigger)
         
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
                 print(error)
