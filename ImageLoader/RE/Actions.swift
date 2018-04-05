@@ -61,6 +61,11 @@ func addToFavorites(place: Place) -> (AppState, Store<AppState>) -> Action? {
     }
 }
 
+func registerForNotificationsIfNeeded(state: AppState, store: Store<AppState>) -> Action? {
+    NotificationService.registerForNotificationsIfNeeded()
+    return Default()
+}
+
 struct RemoveFavorite: Action { let place: Place }
 
 func removeFromFavorite(place: Place) -> (AppState, Store<AppState>) -> Action? {

@@ -26,21 +26,7 @@ class MapController: UIViewController {
         mapView.isMyLocationEnabled = true
         mapView.delegate = self
         
-        UNUserNotificationCenter.current().getNotificationSettings { (notificationSettings) in
-            switch notificationSettings.authorizationStatus {
-            case .notDetermined:
-                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (success, error) in
-                    if let error = error {
-                        print("Request Authorization Failed (\(error), \(error.localizedDescription))")
-                    }
-                    
-                }
-            case .authorized:
-                break
-            case .denied:
-                print("Application Not Allowed to Display Notifications")
-            }
-        }
+        store.dispatch(registerForNotificationsIfNeeded)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

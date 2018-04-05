@@ -12,6 +12,24 @@ import UserNotifications
 
 class NotificationService {
     
+    static func registerForNotificationsIfNeeded() {
+        UNUserNotificationCenter.current().getNotificationSettings { (notificationSettings) in
+            switch notificationSettings.authorizationStatus {
+            case .notDetermined:
+                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (success, error) in
+                    if let error = error {
+                        print("Request Authorization Failed (\(error), \(error.localizedDescription))")
+                    }
+                    
+                }
+            case .authorized:
+                break
+            case .denied:
+                print("Application Not Allowed to Display Notifications")
+            }
+        }
+    }
+    
     static func scheduleLocationNotification(title: String, body: String, region: CLRegion) {
         let content = UNMutableNotificationContent()
         content.title = title
