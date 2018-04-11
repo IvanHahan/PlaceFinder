@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O8U-KG-TGO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O8U-KG-TGO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,7 +40,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Skw-EO-UO4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1464.8" y="37.331334332833585"/>
+            <point key="canvasLocation" x="2404" y="37.331334332833585"/>
         </scene>
         <!--Map-->
         <scene sceneID="Ky4-WD-gQE">
@@ -83,22 +83,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="xi3-bI-dzu">
-                                <rect key="frame" x="0.0" y="72" width="0.0" height="301"/>
+                                <rect key="frame" x="8" y="72" width="359" height="301"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xtt-os-QbI">
-                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="250"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="250"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="250" id="lWn-CM-RKv"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dfgsdfg" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVy-Kt-adR">
-                                        <rect key="frame" x="0.0" y="255" width="0.0" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="255" width="59.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sdfas f asd f" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6i2-nW-0Jv">
-                                        <rect key="frame" x="0.0" y="280.5" width="0.0" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="280.5" width="94" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -146,6 +146,7 @@
                     <connections>
                         <segue destination="jpU-O9-kiH" kind="relationship" relationship="viewControllers" id="liC-P2-LIK"/>
                         <segue destination="9AV-3B-ITg" kind="relationship" relationship="viewControllers" id="vmn-zr-Q8v"/>
+                        <segue destination="Z22-1b-Srs" kind="relationship" relationship="viewControllers" id="Kuf-o6-hLf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9j9-fQ-zOa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -188,7 +189,48 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTy-TK-wza" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="696" y="38.680659670164921"/>
+            <point key="canvasLocation" x="1634.4000000000001" y="38.23088455772114"/>
+        </scene>
+        <!--Manipulate-->
+        <scene sceneID="29q-zh-gAU">
+            <objects>
+                <viewController id="5bq-3a-E3n" customClass="ManipulateViewsController" customModule="ImageLoader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ywg-gx-UvS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="QGH-F6-x88"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Manipulate" id="bN6-Va-Sfg">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="NiL-Mq-6IV">
+                            <connections>
+                                <action selector="didPressAdd:" destination="5bq-3a-E3n" id="Nhr-qq-N4i"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TPc-e5-Wfd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="570" y="444"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="gzf-Yg-5es">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z22-1b-Srs" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="TaR-Dx-op1"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="w98-wT-Kyr">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5bq-3a-E3n" kind="relationship" relationship="rootViewController" id="KDm-wR-RqH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wMc-KN-irZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-258.39999999999998" y="443.92803598200902"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

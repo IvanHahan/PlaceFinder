@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		307E3860E148F3C4D8B26195 /* Pods_ImageLoader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8ED332EAEDB1689CC4A042 /* Pods_ImageLoader.framework */; };
 		920F397420639CAF00AAE082 /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920F397320639CAF00AAE082 /* FavoritesController.swift */; };
+		921E91F4207E1907006BB24E /* ManipulateViewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921E91F3207E1907006BB24E /* ManipulateViewsController.swift */; };
 		925D81F52062A2350094431B /* MapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925D81F42062A2350094431B /* MapMarker.swift */; };
 		925D81FE2062B0A90094431B /* PlaceMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925D81FC2062B0A90094431B /* PlaceMO+CoreDataProperties.swift */; };
 		925D81FF2062B0A90094431B /* PlaceMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925D81FD2062B0A90094431B /* PlaceMO+CoreDataClass.swift */; };
@@ -52,6 +53,7 @@
 		2CC58902CF216D374587B8DD /* Pods-ImageLoader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageLoader.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImageLoader/Pods-ImageLoader.release.xcconfig"; sourceTree = "<group>"; };
 		8A25CA749AB49A2F3276CC49 /* Pods-ImageLoader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageLoader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImageLoader/Pods-ImageLoader.debug.xcconfig"; sourceTree = "<group>"; };
 		920F397320639CAF00AAE082 /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
+		921E91F3207E1907006BB24E /* ManipulateViewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManipulateViewsController.swift; sourceTree = "<group>"; };
 		925D81F42062A2350094431B /* MapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarker.swift; sourceTree = "<group>"; };
 		925D81FC2062B0A90094431B /* PlaceMO+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlaceMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		925D81FD2062B0A90094431B /* PlaceMO+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlaceMO+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				F48CF6A2205477AB00B3F7C0 /* MapController.swift */,
 				9295C8FB206294FA0081BB3E /* PlaceDetailsController.swift */,
 				920F397320639CAF00AAE082 /* FavoritesController.swift */,
+				921E91F3207E1907006BB24E /* ManipulateViewsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				F48CF6A52054790C00B3F7C0 /* PlaceRepository.swift in Sources */,
 				925D81FE2062B0A90094431B /* PlaceMO+CoreDataProperties.swift in Sources */,
 				F48CF67E205472C100B3F7C0 /* SessionManager.swift in Sources */,
+				921E91F4207E1907006BB24E /* ManipulateViewsController.swift in Sources */,
 				F48CF61C2054717500B3F7C0 /* Places.xcdatamodeld in Sources */,
 				920F397420639CAF00AAE082 /* FavoritesController.swift in Sources */,
 				F48CF680205472C100B3F7C0 /* CoreDataStack.swift in Sources */,
