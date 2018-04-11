@@ -32,9 +32,7 @@
 		F48CF681205472C100B3F7C0 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF647205472C100B3F7C0 /* Managed.swift */; };
 		F48CF68C205472C100B3F7C0 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF656205472C100B3F7C0 /* Identifiable.swift */; };
 		F48CF698205472C100B3F7C0 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF66C205472C100B3F7C0 /* UITableViewExtensions.swift */; };
-		F48CF69F205472C100B3F7C0 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF675205472C100B3F7C0 /* States.swift */; };
-		F48CF6A0205472C100B3F7C0 /* Reducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF676205472C100B3F7C0 /* Reducers.swift */; };
-		F48CF6A1205472C100B3F7C0 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF677205472C100B3F7C0 /* Actions.swift */; };
+		F48CF6A0205472C100B3F7C0 /* RE.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF676205472C100B3F7C0 /* RE.swift */; };
 		F48CF6A3205477AB00B3F7C0 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF6A2205477AB00B3F7C0 /* MapController.swift */; };
 		F48CF6A52054790C00B3F7C0 /* PlaceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF6A42054790C00B3F7C0 /* PlaceRepository.swift */; };
 		F48CF6A72054798200B3F7C0 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CF6A62054798200B3F7C0 /* Place.swift */; };
@@ -83,9 +81,7 @@
 		F48CF647205472C100B3F7C0 /* Managed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
 		F48CF656205472C100B3F7C0 /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		F48CF66C205472C100B3F7C0 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
-		F48CF675205472C100B3F7C0 /* States.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
-		F48CF676205472C100B3F7C0 /* Reducers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducers.swift; sourceTree = "<group>"; };
-		F48CF677205472C100B3F7C0 /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
+		F48CF676205472C100B3F7C0 /* RE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RE.swift; sourceTree = "<group>"; };
 		F48CF6A2205477AB00B3F7C0 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		F48CF6A42054790C00B3F7C0 /* PlaceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRepository.swift; sourceTree = "<group>"; };
 		F48CF6A62054798200B3F7C0 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
@@ -184,10 +180,10 @@
 				92EF74412075FEC20087064A /* test.gpx */,
 				F48CF6132054717500B3F7C0 /* AppDelegate.swift */,
 				F48CF63A205472C100B3F7C0 /* Constants.swift */,
+				F48CF676205472C100B3F7C0 /* RE.swift */,
 				925D81F62062A23C0094431B /* View */,
 				F424267F20554E7000D992D9 /* Services */,
 				F48CF6A82054798700B3F7C0 /* Model */,
-				F48CF674205472C100B3F7C0 /* RE */,
 				F48CF66E205472C100B3F7C0 /* Controllers */,
 				F48CF66B205472C100B3F7C0 /* Extensions */,
 				F48CF64D205472C100B3F7C0 /* Repositories */,
@@ -272,16 +268,6 @@
 				920F397320639CAF00AAE082 /* FavoritesController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		F48CF674205472C100B3F7C0 /* RE */ = {
-			isa = PBXGroup;
-			children = (
-				F48CF675205472C100B3F7C0 /* States.swift */,
-				F48CF676205472C100B3F7C0 /* Reducers.swift */,
-				F48CF677205472C100B3F7C0 /* Actions.swift */,
-			);
-			path = RE;
 			sourceTree = "<group>";
 		};
 		F48CF6A82054798700B3F7C0 /* Model */ = {
@@ -525,7 +511,6 @@
 				F48CF6142054717500B3F7C0 /* AppDelegate.swift in Sources */,
 				F424267E20554E6C00D992D9 /* LocationService.swift in Sources */,
 				F48CF681205472C100B3F7C0 /* Managed.swift in Sources */,
-				F48CF69F205472C100B3F7C0 /* States.swift in Sources */,
 				9295C8FC206294FA0081BB3E /* PlaceDetailsController.swift in Sources */,
 				F48CF698205472C100B3F7C0 /* UITableViewExtensions.swift in Sources */,
 				925D81F52062A2350094431B /* MapMarker.swift in Sources */,
@@ -540,12 +525,11 @@
 				F48CF678205472C100B3F7C0 /* Constants.swift in Sources */,
 				925D81FF2062B0A90094431B /* PlaceMO+CoreDataClass.swift in Sources */,
 				92FBFDEE20650E9F008F5B6F /* NotificationService.swift in Sources */,
-				F48CF6A1205472C100B3F7C0 /* Actions.swift in Sources */,
 				F48CF67C205472C100B3F7C0 /* Request.swift in Sources */,
 				9261C7DB2061580500F094E2 /* GoogleRequestResponse.swift in Sources */,
 				F48CF6A3205477AB00B3F7C0 /* MapController.swift in Sources */,
 				F48CF68C205472C100B3F7C0 /* Identifiable.swift in Sources */,
-				F48CF6A0205472C100B3F7C0 /* Reducers.swift in Sources */,
+				F48CF6A0205472C100B3F7C0 /* RE.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

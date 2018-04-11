@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import ReSwift
+import Closures
 
 class FavoritesController: UIViewController {
 
@@ -19,25 +20,47 @@ class FavoritesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        
+    }
+    
+    private func setupTableView() {
+        tableView.register(UITableViewCell.self)
+        tableView.tableFooterView = UIView()
+        tableView.numberOfRows { [unowned self] _ in
+                return self.places.count
+            }.cellForRow { [unowned self] indexPath in
+                let cell = self.tableView.dequeueReusableCell(resource: UITableViewCell.self, for: indexPath)
+                cell.textLabel?.text = self.places[indexPath.row].name
+                cell.detailTextLabel?.text = self.places[indexPath.row].address
+                cell.imageView?.kf.setImage(with: self.places[indexPath.row].icon) { [unowned self] _, _, _, _ in
+                    self.tableView.reloadRows(at: [indexPath], with: .none)
+                }
+                return cell
+            }.didSelectRowAt { [unowned self] indexPath in
+                self.performSegue(withIdentifier: "PlaceDetails", sender: self.places[indexPath.row])
+            }.canEditRowAt {
+                _ in return true
+            }.commit { [unowned self] editingStyle, indexPath in
+                switch editingStyle {
+                case .delete:
+                    store.dispatch(removeFromFavorite(place: self.places[indexPath.row]))
+                default:()
+                }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         store.subscribe(self) {
             $0.select {
                 $0.favoritesState
             }
         }
-        
-    }
-    
-    private func setupTableView() {
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(UITableViewCell.self)
-        tableView.tableFooterView = UIView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         store.dispatch(loadFavorites)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        store.unsubscribe(self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -48,8 +71,10 @@ class FavoritesController: UIViewController {
     }
 }
 
+// MARK: - StoreSubscriber
+
 extension FavoritesController: StoreSubscriber {
-    func newState(state: FavoritesState) {
+    func newState(state: State) {
         switch state {
         case .favorites(let places):
             self.places = places
@@ -58,41 +83,55 @@ extension FavoritesController: StoreSubscriber {
             guard let index = places.index(of: place) else { return }
             places.remove(at: index)
             tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
-        default:()
+        default: ()
         }
     }
 }
 
-extension FavoritesController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return places.count
+// MARK: - RE
+
+extension FavoritesController {
+    
+    // MARK: - State
+    
+    enum State: StateType {
+        case `default`, favorites([Place]), remove(Place)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(resource: UITableViewCell.self, for: indexPath)
-        cell.textLabel?.text = places[indexPath.row].name
-        cell.detailTextLabel?.text = places[indexPath.row].address
-        cell.imageView?.kf.setImage(with: places[indexPath.row].icon) { [unowned self] _, _, _, _ in
-            self.tableView.reloadRows(at: [indexPath], with: .none)
+    // MARK: - Reducer
+    
+    static func reducer(action: Action, state: State?) -> State {
+        switch action {
+        case let action as SetFavorites:
+            return .favorites(action.places)
+        case let action as RemoveFavorite:
+            return .remove(action.place)
+        default:
+            return .default
         }
-        return cell
+    }
+    
+}
+
+// MARK: - Actions
+
+private struct RemoveFavorite: Action { let place: Place }
+private struct SetFavorites: Action { let places: [Place] }
+
+// MARK: - ActionCreators
+
+private func removeFromFavorite(place: Place) -> (AppState, Store<AppState>) -> Action? {
+    return { state, store in
+        PlaceRepository.shared.removeFavorite(place: place).then { (place) in
+            store.dispatch(RemoveFavorite(place: place))
+        }
+        return Loading()
     }
 }
 
-extension FavoritesController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "PlaceDetails", sender: places[indexPath.row])
+private func loadFavorites(state: AppState, store: Store<AppState>) -> Action? {
+    PlaceRepository.shared.loadFavorites().then { places in
+        store.dispatch(SetFavorites(places: places))
     }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        switch editingStyle {
-        case .delete:
-            store.dispatch(removeFromFavorite(place: places[indexPath.row]))
-        default:()
-        }
-    }
+    return Loading()
 }

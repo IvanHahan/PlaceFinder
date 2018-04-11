@@ -22,11 +22,25 @@ class MapController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupStore()
         mapView.isMyLocationEnabled = true
         mapView.delegate = self
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        store.subscribe(self) {
+            $0.select {
+                $0.mapState
+            }
+        }
+        store.dispatch(startListeningLocation)
         store.dispatch(registerForNotificationsIfNeeded)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        store.unsubscribe(self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -35,21 +49,13 @@ class MapController: UIViewController {
             vc.place = place
         }
     }
-    
-    fileprivate func setupStore() {
-        store.subscribe(self) {
-            $0.select {
-                $0.mapState
-            }
-        }
-        store.dispatch(startListeningLocation)
-    }
-
 }
+
+// MARK: - StoreSubscriber
 
 extension MapController: StoreSubscriber {
     
-    func newState(state: MapState) {
+    func newState(state: State) {
         switch state {
         case .places(let places):
             for place in places {
@@ -88,6 +94,8 @@ extension MapController: StoreSubscriber {
     }
 }
 
+// MARK: - GMSMapViewDelegate
+
 extension MapController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
         guard let coordinate = lastPosition else {
@@ -114,3 +122,64 @@ extension MapController: GMSMapViewDelegate {
         performSegue(withIdentifier: "PlaceDetails", sender: place)
     }
 }
+
+// MARK: - RE
+
+extension MapController {
+    
+    enum State: StateType {
+        case places([Place])
+        case location(CLLocation)
+        case loading
+    }
+    
+    static func reducer(action: Action, state: State?) -> State {
+        switch action {
+        case let action as UpdatePlaces:
+            return .places(action.places)
+        case let action as UpdateLocation:
+            return .location(action.location)
+        default:
+            return state ?? .places([])
+        }
+    }
+}
+
+// MARK: - Actions
+
+private struct UpdateLocation: Action { let location: CLLocation }
+
+private struct UpdatePlaces: Action { let places: [Place] }
+
+// MARK: - ActionCreators
+
+private func requestLocationAuthorization(state: AppState, store: Store<AppState>) -> Action {
+    if !LocationService.shared.isAuthorized {
+        LocationService.shared.requestAuthorization()
+    }
+    return Dumb()
+}
+
+private func startListeningLocation(state: AppState, store: Store<AppState>) -> Action? {
+    LocationService.shared.startObservingLocation { location in
+        store.dispatch(UpdateLocation(location: location))
+    }
+    return LocationService.shared.currentLocation == nil ? Dumb() : UpdateLocation(location: LocationService.shared.currentLocation!)
+}
+
+private func loadPlaces(location: CLLocation, types: [String], radius: Int = 500) -> (AppState, Store<AppState>) -> Action? {
+    return { state, store in
+        PlaceRepository.shared.loadPlaces(types: types, location: location.coordinate, radius: radius).then({ places in
+            store.dispatch(UpdatePlaces(places: places))
+        }).catch { error in
+            store.dispatch(Failure(error: error))
+        }
+        return Loading()
+    }
+}
+
+private func registerForNotificationsIfNeeded(state: AppState, store: Store<AppState>) -> Action? {
+    NotificationService.registerForNotificationsIfNeeded()
+    return Dumb()
+}
+
